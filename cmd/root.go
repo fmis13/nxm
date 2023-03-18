@@ -7,6 +7,7 @@ package cmd
 import (
 	"fmt"
 	"os"
+	"os/user"
 
 	"github.com/nixmember/nixmember/programs"
 
@@ -51,10 +52,11 @@ var versionCmd = &cobra.Command{
 }
 
 var InstallCmd = &cobra.Command{
-	Use:   "install",
-	Short: "Install a program",
-	Long:  "",
-	Args:  cobra.MinimumNArgs(1),
+	Use:    "install",
+	Short:  "Install a program",
+	Long:   "",
+	PreRun: isRoot,
+	Args:   cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Println("Please supply a program to install \n")
 		fmt.Println("To see all programs avalible run `nxm programs`")
@@ -84,6 +86,21 @@ var programsCmd = &cobra.Command{
 		fmt.Print("Home Assistant - open source home automation that puts local control and privacy first - ")
 		color.Cyan("`homeassistant`")
 	},
+}
+
+func isRoot() bool {
+	currentUser, err := user.Current()
+	if err != nil {
+		fmt.Println("Something went wrong, please report this.")
+	}
+	if currentUser.Username != "root" {
+		fmt.Println("Please run this command as root.")
+	}
+	return false
+}
+
+func rootCheck() {
+
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.
