@@ -16,4 +16,3 @@ jobs:
         goos: linux
         goarch: amd64
         binary_name: nxm-${{ matrix.goos }}-${{ matrix.goarch }}
-        ldflags: -o nxm
