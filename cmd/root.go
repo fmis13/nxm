@@ -82,8 +82,7 @@ var UpdateCmd = &cobra.Command{
 		if err != nil {
 			fmt.Println("Something went wrong, please report this to the issues page on GitHub.")
 		}
-		if currentUser.Username != "root" { // wait for our bar to complete and flush
-			p.Wait()
+		if currentUser.Username != "root" {
 			fmt.Println("Please run this command as root.")
 			os.Exit(1)
 		}
