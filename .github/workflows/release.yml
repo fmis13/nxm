@@ -12,9 +12,10 @@ jobs:
     runs-on: "ubuntu-latest"
 
     steps:
-      # ...
+      - uses: actions/checkout@v3
       - name: "Build & test"
         run: |
+          go get .
           go build -o nxm
 
       - uses: "marvinpinto/action-automatic-releases@latest"
