@@ -44,21 +44,30 @@ var versionCmd = &cobra.Command{
 	Long:  "",
 	Run: func(cmd *cobra.Command, args []string) {
 		figure.NewFigure("nxm", "", true).Print()
-		fmt.Println("\nnxm v1.0.0 - a command line tool for (home-)servers that aims to make self-hosting easier.")
-		fmt.Println("Copyright © 2022-2023 NixMember Team \n")
+		fmt.Printf("\nnxm v1.0.0 - a command line tool for (home-)servers that aims to make self-hosting easier.")
+		fmt.Printf("Copyright © 2022-2023 NixMember Team \n")
 		fmt.Println("This program is open source, you can freely redestribute it under the terms of the MIT license.")
 		fmt.Println("You can find the source code at https://github.com/nixmember/nixmember")
 	},
 }
 
 var InstallCmd = &cobra.Command{
-	Use:    "install",
-	Short:  "Install a program",
-	Long:   "",
-	PreRun: isRoot,
-	Args:   cobra.MinimumNArgs(1),
+	Use:   "install",
+	Short: "Install a program",
+	Long:  "",
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+		currentUser, err := user.Current()
+		if err != nil {
+			fmt.Println("Something went wrong, please report this.")
+		}
+		if currentUser.Username != "root" {
+			fmt.Println("Please run this command as root.")
+			os.Exit(1)
+		}
+	},
+	Args: cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Please supply a program to install \n")
+		fmt.Printf("Please supply a program to install \n")
 		fmt.Println("To see all programs avalible run `nxm programs`")
 	},
 }
@@ -67,9 +76,19 @@ var UninstallCmd = &cobra.Command{
 	Use:   "uninstall",
 	Short: "Uninstall a program",
 	Long:  "",
-	Args:  cobra.MinimumNArgs(1),
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+		currentUser, err := user.Current()
+		if err != nil {
+			fmt.Println("Something went wrong, please report this.")
+		}
+		if currentUser.Username != "root" {
+			fmt.Println("Please run this command as root.")
+			os.Exit(3)
+		}
+	},
+	Args: cobra.MinimumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Please supply a program to uninstall \n")
+		fmt.Printf("Please supply a program to uninstall \n")
 	},
 }
 
@@ -78,7 +97,7 @@ var programsCmd = &cobra.Command{
 	Short: "List all avalible programs",
 	Long:  "",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("Programs currently avalible:\n")
+		fmt.Printf("Programs currently avalible:\n")
 		fmt.Print("Bitwarden - a open source password manager - ")
 		color.Blue("`bitwarden`")
 		fmt.Print("Jellyfin - The Free Software Media System - ")
@@ -86,21 +105,6 @@ var programsCmd = &cobra.Command{
 		fmt.Print("Home Assistant - open source home automation that puts local control and privacy first - ")
 		color.Cyan("`homeassistant`")
 	},
-}
-
-func isRoot() bool {
-	currentUser, err := user.Current()
-	if err != nil {
-		fmt.Println("Something went wrong, please report this.")
-	}
-	if currentUser.Username != "root" {
-		fmt.Println("Please run this command as root.")
-	}
-	return false
-}
-
-func rootCheck() {
-
 }
 
 // Execute adds all child commands to the root command and sets flags appropriately.

@@ -64,7 +64,7 @@ func bitwardenInstallation() {
 }
 
 func bitwardenUninstallation() {
-	cmd := exec.Command("/bin/bash", "-c", "sudo userdel bitwarden; sudo rm -rf /opt/bitwarden")
+	cmd := exec.Command("/bin/bash", "-c", "userdel bitwarden; rm -rf /opt/bitwarden")
 
 	stdout, err := cmd.Output()
 
