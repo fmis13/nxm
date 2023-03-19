@@ -1,0 +1,22 @@
+name: build nxm
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Go
+        uses: actions/setup-go@v3
+      - name: Install dependencies
+        run: go get .
+      - name: Build
+        run: go build -o nxm
+      - name: Upload binaries
+        uses: actions/upload-artifact@v3
+        with:
+          name: nxm
+          path: nxm
