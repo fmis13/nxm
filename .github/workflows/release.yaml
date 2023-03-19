@@ -1,12 +1,10 @@
-name: build and release on tag
-
 on:
   release:
     types: [created]
 
 jobs:
-  build:
-    name: build
+  release-linux-amd64:
+    name: release linux/amd64
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -15,4 +13,3 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         goos: linux
         goarch: amd64
-        binary_name: nxm-${{ matrix.goos }}-${{ matrix.goarch }}
