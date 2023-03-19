@@ -16,5 +16,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         goos: linux
         goarch: amd64
-        asset_name: nxm-${{ goos }}-${{ goarch }}
+        asset_name: env.BINARY_NAME
         compress_assets: false
