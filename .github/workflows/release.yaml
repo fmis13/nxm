@@ -13,6 +13,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         goos: linux
         goarch: amd64
-        binary_name: nxm-${{ matrix.goos }}-${{ matrix.goarch }}
         asset_name: nxm-${{ matrix.goos }}-${{ matrix.goarch }}
         compress_assets: false
