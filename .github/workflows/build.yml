@@ -1,27 +1,18 @@
-name: build nxm
+name: build and release on tag
 
-on: [push]
+on:
+  release:
+    types: [created]
 
 jobs:
   build:
-
+    name: build
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v3
-      - name: Setup Go
-        uses: actions/setup-go@v3
-      - name: Install dependencies
-        run: go get .
-      - name: Build
-        run: go build -o nxm
-      - name: Upload binaries
-        uses: actions/upload-artifact@v3
-        with:
-          name: nxm
-          path: nxm
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          prerelease: true
-          files: nxm
+    - uses: actions/checkout@v3
+    - uses: wangyoucao577/go-release-action@v1
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        goos: linux
+        goarch: amd64
+        ldflags: -o nxm
