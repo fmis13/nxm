@@ -2,9 +2,6 @@ on:
   release:
     types: [created]
 
-env:
-  BINARY_NAME: nxm-${{ release.goos }}-${{ release.goarch }}
-
 jobs:
   release:
     name: release
@@ -16,5 +13,5 @@ jobs:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         goos: linux
         goarch: amd64
-        asset_name: env.BINARY_NAME
+        asset_name: nxm-${{ goos }}-${{ goarch }}
         compress_assets: false
