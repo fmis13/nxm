@@ -3,15 +3,19 @@ on:
     types: [created]
 
 jobs:
-  release:
+  releases-matrix:
     name: release
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [linux]
+        goarch: [amd64, arm64]
     steps:
     - uses: actions/checkout@v3
     - uses: wangyoucao577/go-release-action@v1.36
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        goos: linux
-        goarch: amd64
-        asset_name: nxm-${{ goos }}-${{ goarch }}
+        goos: ${{ matrix.goos }}
+        goarch: ${{ matrix.goarch }}
+        asset_name: nxm-${{ matrix.goos }}-${{ matrix.goarch }}
         compress_assets: false
