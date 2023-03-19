@@ -25,6 +25,13 @@ var JellyfinUninstallation = &cobra.Command{
 	},
 }
 
+var JellyfinUpdate = &cobra.Command{
+	Use: "jellyfin",
+	Run: func(cmd *cobra.Command, args []string) {
+		jellyfinUpdate()
+	},
+}
+
 func jellyfinInstallation() {
 
 	cmd := exec.Command("/bin/bash", "-c", jellyfinScript)
@@ -40,6 +47,18 @@ func jellyfinInstallation() {
 
 func jellyfinUninstallation() {
 	cmd := exec.Command("/bin/bash", "-c", "rm -rf $HOME/jellyfin")
+
+	stdout, err := cmd.Output()
+
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(string(stdout))
+}
+
+func jellyfinUpdate() {
+	cmd := exec.Command("/bin/bash", "-c", "cd $HOME/jellyfin; docker-compose pull")
 
 	stdout, err := cmd.Output()
 

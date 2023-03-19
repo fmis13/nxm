@@ -21,6 +21,7 @@ func init() {
 	rootCmd.AddCommand(InstallCmd)
 	rootCmd.AddCommand(UninstallCmd)
 	rootCmd.AddCommand(programsCmd)
+	rootCmd.AddCommand(UpdateCmd)
 
 	InstallCmd.AddCommand(programs.Bitwarden)
 	InstallCmd.AddCommand(programs.HomeAssistant)
@@ -29,6 +30,10 @@ func init() {
 	UninstallCmd.AddCommand(programs.BitwardenUninstallation)
 	UninstallCmd.AddCommand(programs.HomeAssistantUninstallation)
 	UninstallCmd.AddCommand(programs.JellyfinUninstallation)
+
+	UpdateCmd.AddCommand(programs.BitwardenUpdate)
+	UpdateCmd.AddCommand(programs.HomeAssistantUpdate)
+	UpdateCmd.AddCommand(programs.JellyfinUpdate)
 }
 
 // rootCmd represents the base command when called without any subcommands
@@ -58,7 +63,7 @@ var InstallCmd = &cobra.Command{
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		currentUser, err := user.Current()
 		if err != nil {
-			fmt.Println("Something went wrong, please report this.")
+			fmt.Println("Something went wrong, please report this to the issues page on GitHub.")
 		}
 		if currentUser.Username != "root" {
 			fmt.Println("Please run this command as root.")
@@ -66,10 +71,24 @@ var InstallCmd = &cobra.Command{
 		}
 	},
 	Args: cobra.MinimumNArgs(1),
-	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("Please supply a program to install \n")
-		fmt.Println("To see all programs avalible run `nxm programs`")
+}
+
+var UpdateCmd = &cobra.Command{
+	Use:   "update",
+	Short: "update",
+	Long:  "",
+	PersistentPreRun: func(cmd *cobra.Command, args []string) {
+		currentUser, err := user.Current()
+		if err != nil {
+			fmt.Println("Something went wrong, please report this to the issues page on GitHub.")
+		}
+		if currentUser.Username != "root" { // wait for our bar to complete and flush
+			p.Wait()
+			fmt.Println("Please run this command as root.")
+			os.Exit(1)
+		}
 	},
+	Args: cobra.MinimumNArgs(1),
 }
 
 var UninstallCmd = &cobra.Command{

@@ -26,7 +26,7 @@ curl https://raw.githubusercontent.com/nixmember/nixmember/master/install.sh | s
 
 ##### Local installation
 ```bash
-curl https://raw.githubusercontent.com/srevinsaju/zap/main/install.sh | bash -s
+curl https://raw.githubusercontent.com/nixmember/nixmember/main/install.sh | bash -s
 ```
 
 ### Compiling

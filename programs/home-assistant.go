@@ -25,6 +25,13 @@ var HomeAssistantUninstallation = &cobra.Command{
 	},
 }
 
+var HomeAssistantUpdate = &cobra.Command{
+	Use: "home-assistant",
+	Run: func(cmd *cobra.Command, args []string) {
+		homeAssistantUpdate()
+	},
+}
+
 func homeAssistantInstallation() {
 
 	cmd := exec.Command("/bin/bash", "-c", homeAssistantScript)
@@ -40,6 +47,18 @@ func homeAssistantInstallation() {
 
 func homeAssistantUninstallation() {
 	cmd := exec.Command("/bin/bash", "-c", "rm -rf $HOME/home-assistant")
+
+	stdout, err := cmd.Output()
+
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	fmt.Println(string(stdout))
+}
+
+func homeAssistantUpdate() {
+	cmd := exec.Command("/bin/bash", "-c", "cd $HOME/home-assistant; docker-compose pull")
 
 	stdout, err := cmd.Output()
 
