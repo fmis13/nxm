@@ -1,5 +1,5 @@
 /*
-Copyright © 2023 the NixMember team [github.com/nixmember]
+Copyright © 2023 [github.com/nixmember]
 */
 
 package cmd
@@ -26,20 +26,23 @@ func init() {
 	InstallCmd.AddCommand(programs.Bitwarden)
 	InstallCmd.AddCommand(programs.HomeAssistant)
 	InstallCmd.AddCommand(programs.Jellyfin)
+	InstallCmd.AddCommand(programs.Nextcloud)
 
 	UninstallCmd.AddCommand(programs.BitwardenUninstallation)
 	UninstallCmd.AddCommand(programs.HomeAssistantUninstallation)
 	UninstallCmd.AddCommand(programs.JellyfinUninstallation)
+	InstallCmd.AddCommand(programs.NextcloudUninstallation)
 
 	UpdateCmd.AddCommand(programs.BitwardenUpdate)
 	UpdateCmd.AddCommand(programs.HomeAssistantUpdate)
 	UpdateCmd.AddCommand(programs.JellyfinUpdate)
+	InstallCmd.AddCommand(programs.NextcloudUpadte)
 }
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "nxm",
-	Short: "A brief description of your application",
+	Short: "The package manager for linux (home-)servers.",
 	Long:  `error: no operation specified (use --h for help)`,
 }
 

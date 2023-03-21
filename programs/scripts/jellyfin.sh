@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p 'Odaberite mapu koja sadrži vaše medije (filmove, serije) ' mapa
+read -p 'Choose the folder where your media is stored (please use the standard linux paths, e.g /mnt/myvideos): ' FOLDER
 
 	echo 'Sve informacije o ovome programu bit će spremljene u $HOME/jellyfin'
 	mkdir $HOME/jellyfin
@@ -17,8 +17,7 @@ services:
     volumes:
       - /path/to/config:/config
       - /path/to/cache:/cache
-      - /path/to/media:/media
-      - /path/to/media2:/media2:ro
+      - $FOLDER:/media
     restart: 'unless-stopped'
     # Optional - alternative address used for autodiscovery
     environment:
