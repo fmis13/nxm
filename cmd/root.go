@@ -69,7 +69,7 @@ var InstallCmd = &cobra.Command{
 			fmt.Println("Something went wrong, please report this to the issues page on GitHub.")
 		}
 		if currentUser.Username != "root" {
-			fmt.Println("Please run this command as root.")
+			fmt.Println("error: you cannot perform this operation unless you are root.")
 			os.Exit(1)
 		}
 	},
