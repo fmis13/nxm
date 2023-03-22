@@ -31,12 +31,12 @@ func init() {
 	UninstallCmd.AddCommand(programs.BitwardenUninstallation)
 	UninstallCmd.AddCommand(programs.HomeAssistantUninstallation)
 	UninstallCmd.AddCommand(programs.JellyfinUninstallation)
-	InstallCmd.AddCommand(programs.NextcloudUninstallation)
+	UninstallCmd.AddCommand(programs.NextcloudUninstallation)
 
 	UpdateCmd.AddCommand(programs.BitwardenUpdate)
 	UpdateCmd.AddCommand(programs.HomeAssistantUpdate)
 	UpdateCmd.AddCommand(programs.JellyfinUpdate)
-	InstallCmd.AddCommand(programs.NextcloudUpadte)
+	UpdateCmd.AddCommand(programs.NextcloudUpadte)
 }
 
 // rootCmd represents the base command when called without any subcommands
