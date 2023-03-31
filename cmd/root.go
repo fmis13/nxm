@@ -47,9 +47,7 @@ var rootCmd = &cobra.Command{
 }
 
 var versionCmd = &cobra.Command{
-	Use:   "version",
-	Short: "Print version info",
-	Long:  "",
+	Use: "version",
 	Run: func(cmd *cobra.Command, args []string) {
 		figure.NewFigure("nxm", "", true).Print()
 		fmt.Printf("\nnxm v1.0.0 - a command line tool for (home-)servers that aims to make self-hosting easier.")
@@ -60,9 +58,7 @@ var versionCmd = &cobra.Command{
 }
 
 var InstallCmd = &cobra.Command{
-	Use:   "install",
-	Short: "Install a program",
-	Long:  "",
+	Use: "install",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		currentUser, err := user.Current()
 		if err != nil {
@@ -77,9 +73,7 @@ var InstallCmd = &cobra.Command{
 }
 
 var UpdateCmd = &cobra.Command{
-	Use:   "update",
-	Short: "update",
-	Long:  "",
+	Use: "update",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		currentUser, err := user.Current()
 		if err != nil {
@@ -94,9 +88,7 @@ var UpdateCmd = &cobra.Command{
 }
 
 var UninstallCmd = &cobra.Command{
-	Use:   "uninstall",
-	Short: "Uninstall a program",
-	Long:  "",
+	Use: "uninstall",
 	PersistentPreRun: func(cmd *cobra.Command, args []string) {
 		currentUser, err := user.Current()
 		if err != nil {
@@ -114,9 +106,7 @@ var UninstallCmd = &cobra.Command{
 }
 
 var programsCmd = &cobra.Command{
-	Use:   "programs",
-	Short: "List all avalible programs",
-	Long:  "",
+	Use: "programs",
 	Run: func(cmd *cobra.Command, args []string) {
 		fmt.Printf("Programs currently avalible:\n")
 		fmt.Print("Bitwarden - a open source password manager - ")
