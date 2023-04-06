@@ -9,5 +9,5 @@ curl -Lso bitwarden.sh "https://func.bitwarden.com/api/dl/?app=self-host&platfor
 while true; do
 {
     ./bitwarden.sh install
-    break
+    sleep 60
 }
