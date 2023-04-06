@@ -21,14 +21,14 @@ var Nextcloud = &cobra.Command{
 var NextcloudUninstallation = &cobra.Command{
 	Use: "home-assistant",
 	Run: func(cmd *cobra.Command, args []string) {
-		homeAssistantUninstallation()
+		nextcloudUninstallation()
 	},
 }
 
-var NextcloudUpadte = &cobra.Command{
+var NextcloudUpdate = &cobra.Command{
 	Use: "home-assistant",
 	Run: func(cmd *cobra.Command, args []string) {
-		homeAssistantUpdate()
+		nextcloudUpdate()
 	},
 }
 

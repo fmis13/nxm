@@ -36,7 +36,7 @@ func init() {
 	UpdateCmd.AddCommand(programs.BitwardenUpdate)
 	UpdateCmd.AddCommand(programs.HomeAssistantUpdate)
 	UpdateCmd.AddCommand(programs.JellyfinUpdate)
-	UpdateCmd.AddCommand(programs.NextcloudUpadte)
+	UpdateCmd.AddCommand(programs.NextcloudUpdate)
 }
 
 // rootCmd represents the base command when called without any subcommands
