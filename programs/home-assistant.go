@@ -34,7 +34,7 @@ var HomeAssistantUpdate = &cobra.Command{
 
 func homeAssistantInstallation() {
 
-	cmd := exec.Command("/bin/bash", "-i", homeAssistantScript)
+	cmd := exec.Command("/bin/bash", "-c", homeAssistantScript)
 
 	stdout, err := cmd.Output()
 
