@@ -33,7 +33,7 @@ var BitwardenUpdate = &cobra.Command{
 }
 
 func bitwardenInstallation() {
-	cmd := exec.Command(".", bitwardenScript)
+	cmd := exec.Command("/bin/bash", "-c", bitwardenScript)
 
 	stdout, err := cmd.Output()
 
