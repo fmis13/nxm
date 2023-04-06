@@ -3,6 +3,7 @@ package programs
 import (
 	_ "embed"
 	"fmt"
+	"os"
 	"os/exec"
 
 	"github.com/spf13/cobra"
@@ -34,14 +35,29 @@ var BitwardenUpdate = &cobra.Command{
 
 func bitwardenInstallation() {
 	cmd := exec.Command("/bin/bash", "-c", bitwardenScript)
+	stdin, err := cmd.StdinPipe()
 
-	stdout, err := cmd.Output()
+	//stdout, err := cmd.Output()
 
 	if err != nil {
 		fmt.Println(err.Error())
 	}
+	defer stdin.Close()
 
-	fmt.Println(string(stdout))
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	fmt.Println("START")
+
+	if err = cmd.Start(); err != nil { //Use start, not run
+		fmt.Println("An error occured: ", err) //replace with logger, or anything you want
+	}
+
+	//io.WriteString(stdin, "4\n")
+	cmd.Wait()
+	fmt.Println("END") //for debug
+
+	//fmt.Println(string(stdout))
 }
 
 func bitwardenUninstallation() {
