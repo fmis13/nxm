@@ -1,6 +1,6 @@
 #!/bin/bash
 
-adduser bitwarden
+adduser bitwarden --disabled-password
 passwd bitwarden
 usermod -aG docker bitwarden
 mkdir /opt/bitwarden

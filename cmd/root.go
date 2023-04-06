@@ -108,13 +108,15 @@ var UninstallCmd = &cobra.Command{
 var programsCmd = &cobra.Command{
 	Use: "programs",
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Printf("Programs currently avalible:\n")
+		fmt.Printf("Programs currently avaliable: ")
 		fmt.Print("Bitwarden - a open source password manager - ")
 		color.Blue("`bitwarden`")
 		fmt.Print("Jellyfin - The Free Software Media System - ")
 		color.Magenta("`jellyfin`")
 		fmt.Print("Home Assistant - open source home automation that puts local control and privacy first - ")
 		color.Cyan("`homeassistant`")
+		fmt.Print("Nextcloud - open source alternative to OneDrive and similar solutions - ")
+		color.Green("`nextcloud`")
 	},
 }
 
