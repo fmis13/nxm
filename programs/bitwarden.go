@@ -3,6 +3,7 @@ package programs
 import (
 	_ "embed"
 	"fmt"
+	"os"
 	"os/exec"
 
 	"github.com/spf13/cobra"
@@ -34,6 +35,8 @@ var BitwardenUpdate = &cobra.Command{
 
 func bitwardenInstallation() {
 	cmd := exec.Command("/bin/bash", "-i", bitwardenScript)
+
+	cmd.Stdin = os.Stdin
 
 	stdout, err := cmd.Output()
 
