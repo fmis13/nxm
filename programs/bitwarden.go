@@ -9,7 +9,6 @@ import (
 )
 
 //go:embed scripts/bitwarden.sh
-//go:embed scripts/install-bitwarden.sh
 var bitwardenScript string
 
 var Bitwarden = &cobra.Command{
