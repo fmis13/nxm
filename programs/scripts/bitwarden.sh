@@ -7,4 +7,4 @@ cd $HOME/.config/nxm/bitwarden
 
 curl -Lso bitwarden.sh "https://func.bitwarden.com/api/dl/?app=self-host&platform=linux" && chmod 700 bitwarden.sh
 tmux new-session -d -s "bitwarden" ./bitwarden.sh install
-tmux attach-session -t bitwarden
+tmux a
