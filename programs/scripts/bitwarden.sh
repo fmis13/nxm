@@ -1,7 +1,7 @@
 #!/bin/bash
 
 set -e
-set -x
+set +x
 
 mkdir -p $HOME/.config/nxm/bitwarden
 PATH=$HOME/.config/nxm/bitwarden
