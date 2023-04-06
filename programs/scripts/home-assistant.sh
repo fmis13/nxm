@@ -4,10 +4,10 @@ set -e
 
 echo 'All important information will be stored at $HOME/home-assistant'
 
-mkdir $HOME/home-assistant
-mkdir $HOME/home-assistant/config
+mkdir -p $HOME/.config/nxm/home-assistant
+mkdir $HOME/.config/nxm/home-assistant/config
 
-	cat > $HOME/home-assistant/docker-compose.yml << END
+	cat > $HOME/.config/nxm/home-assistant/docker-compose.yml << END
 version: '3'
 services:
   homeassistant:
@@ -21,5 +21,6 @@ services:
     network_mode: host
 END
 
-cd $HOME/home-assistant
+cd $HOME/.config/nxm/home-assistant
+
 docker compose up -d
