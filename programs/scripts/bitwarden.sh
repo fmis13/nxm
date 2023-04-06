@@ -1,7 +1,6 @@
 #!/bin/bash
 
 adduser bitwarden --disabled-password
-passwd bitwarden
 usermod -aG docker bitwarden
 mkdir /opt/bitwarden
 chmod -R 700 /opt/bitwarden
