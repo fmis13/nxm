@@ -2,7 +2,7 @@
 
 set -e
 
-read -p 'Choose a folder to store all your data (please use the standard linux paths, e.g /mnt/mydata): ' $FOLDER
+read -p 'Choose a folder to store all your data: ' $FOLDER
 
 mkdir $HOME/nextcloud
 
