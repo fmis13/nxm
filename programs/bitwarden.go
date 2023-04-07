@@ -1,6 +1,7 @@
 package programs
 
 import (
+	"bufio"
 	_ "embed"
 	"fmt"
 	"os"
@@ -37,7 +38,14 @@ func bitwardenInstallation() {
 	cmd := exec.Command("/bin/bash", "-c", bitwardenScript)
 	stdin, err := cmd.StdinPipe()
 
-	//stdout, err := cmd.Output()
+	scanner := bufio.NewScanner(os.Stdin)
+	for scanner.Scan() {
+		fmt.Println(scanner.Text())
+	}
+
+	if scanner.Err() != nil {
+		fmt.Println("An error ocurred")
+	}
 
 	if err != nil {
 		fmt.Println(err.Error())
