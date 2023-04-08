@@ -10,7 +10,12 @@ echo "You selected folder $FOLDER"
 	mkdir $HOME/jellyfin/config
 	mkdir $HOME/jellyfin/cache
 
-	cat > ~/jellyfin/docker-compose.yml << END
+  mkdir -p $HOME/.config/nxm/jellyfin
+  mkdir $HOME/.config/nxm/jellyfin/config
+  mkdir $HOME/.config/nxm/jellyfin/cache
+
+
+	cat > $HOME/.config/nxm/jellyfin/docker-compose.yml << END
 version: '3.5'
 services:
   jellyfin:
@@ -30,5 +35,5 @@ services:
     extra_hosts:
       - "host.docker.internal:host-gateway"
 END
-	cd $HOME/jellyfin
+	cd $HOME/.config/nxm/jellyfin
 	docker-compose up -d
