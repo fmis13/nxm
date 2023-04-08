@@ -10,11 +10,11 @@ else
     mkdir -p $HOME/.config/nxm/nextcloud
 fi
 
-docker volume create ^
---driver local ^
---name nextcloud_aio_nextcloud_datadir ^
--o device=$FOLDER ^
--o type="none" ^
+docker volume create \
+--driver local \
+--name nextcloud_aio_nextcloud_datadir \
+-o device=$FOLDER \
+-o type="none" \
 -o o="bind"
 
 docker run \
