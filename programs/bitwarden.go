@@ -1,7 +1,6 @@
 package programs
 
 import (
-	"bufio"
 	_ "embed"
 	"fmt"
 	"os"
@@ -35,37 +34,20 @@ var BitwardenUpdate = &cobra.Command{
 }
 
 func bitwardenInstallation() {
+	fmt.Println("Start")
 	cmd := exec.Command("/bin/bash", "-c", bitwardenScript)
-	stdin, err := cmd.StdinPipe()
 
-	scanner := bufio.NewScanner(os.Stdin)
-	for scanner.Scan() {
-		fmt.Println(scanner.Text())
-	}
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
 
-	if scanner.Err() != nil {
-		fmt.Println("An error ocurred")
-	}
+	err := cmd.Run()
 
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-	defer stdin.Close()
 
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
-	fmt.Println("START")
-
-	if err = cmd.Start(); err != nil { //Use start, not run
-		fmt.Println("An error occured: ", err) //replace with logger, or anything you want
-	}
-
-	//io.WriteString(stdin, "4\n")
-	cmd.Wait()
-	fmt.Println("END") //for debug
-
-	//fmt.Println(string(stdout))
+	fmt.Println("Finish")
 }
 
 func bitwardenUninstallation() {

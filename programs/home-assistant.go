@@ -3,6 +3,7 @@ package programs
 import (
 	_ "embed"
 	"fmt"
+	"os"
 	"os/exec"
 
 	"github.com/spf13/cobra"
@@ -36,13 +37,15 @@ func homeAssistantInstallation() {
 
 	cmd := exec.Command("/bin/bash", "-c", homeAssistantScript)
 
-	stdout, err := cmd.Output()
+	cmd.Stdin = os.Stdin
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	err := cmd.Run()
 
 	if err != nil {
 		fmt.Println(err.Error())
 	}
-
-	fmt.Println(string(stdout))
 }
 
 func homeAssistantUninstallation() {

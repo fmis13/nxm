@@ -3,11 +3,13 @@
 set -e
 
 read -p 'Choose the folder where your media is stored (please use the standard linux paths, e.g /mnt/myvideos): ' FOLDER
+echo "You selected folder $FOLDER"
 
 	echo 'Sve informacije o ovome programu bit će spremljene u $HOME/jellyfin'
 	mkdir $HOME/jellyfin
 	mkdir $HOME/jellyfin/config
 	mkdir $HOME/jellyfin/cache
+
 	cat > ~/jellyfin/docker-compose.yml << END
 version: '3.5'
 services:
@@ -19,7 +21,7 @@ services:
     volumes:
       - /path/to/config:/config
       - /path/to/cache:/cache
-      - $FOLDER:/media
+      - "$FOLDER":/media
     restart: 'unless-stopped'
     # Optional - alternative address used for autodiscovery
     environment:
