@@ -5,7 +5,7 @@ set -e
 echo 'All important information will be stored at $HOME/home-assistant'
 
 if [ -d "$HOME/.config/nxm/home-assistant" ] && [ -d "$HOME/.config/nxm/home-assistant/config" ]; then
-    break
+    continue
 else
     mkdir -p $HOME/.config/nxm/home-assistant
     mkdir $HOME/.config/nxm/home-assistant/config

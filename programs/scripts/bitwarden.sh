@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ -d "$HOME/.config/nxm/bitwarden" ]; then
-    break
+    continue
 else
     mkdir -p $HOME/.config/nxm/bitwarden
 fi

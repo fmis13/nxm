@@ -5,7 +5,7 @@ set -e
 read -p 'Choose a folder to store all your data: ' FOLDER
 
 if [ -d "$HOME/.config/nxm/nextcloud" ]; then
-    break
+    continue
 else
     mkdir -p $HOME/.config/nxm/nextcloud
 fi

@@ -6,7 +6,7 @@ read -p 'Choose the folder where your media is stored (please use the standard l
 echo "You selected folder $FOLDER"
 
 if [ -d "$HOME/.config/nxm/jellyfin"] && [ -d "$HOME/.config/nxm/jellyfin/config" ] && [ -d $HOME/.config/nxm/jellyfin/cache ]; then
-    break
+    continue
 else
     mkdir -p $HOME/.config/nxm/jellyfin
     mkdir $HOME/.config/nxm/jellyfin/config
