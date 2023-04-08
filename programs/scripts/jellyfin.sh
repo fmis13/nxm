@@ -21,7 +21,7 @@ services:
     volumes:
       - /path/to/config:/config
       - /path/to/cache:/cache
-      - "$FOLDER":/media
+      - $FOLDER:/media
     restart: 'unless-stopped'
     # Optional - alternative address used for autodiscovery
     environment:
