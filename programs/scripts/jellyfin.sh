@@ -5,11 +5,6 @@ set -e
 read -p 'Choose the folder where your media is stored (please use the standard linux paths, e.g /mnt/myvideos): ' FOLDER
 echo "You selected folder $FOLDER"
 
-	echo 'Sve informacije o ovome programu bit će spremljene u $HOME/jellyfin'
-	mkdir $HOME/jellyfin
-	mkdir $HOME/jellyfin/config
-	mkdir $HOME/jellyfin/cache
-
   mkdir -p $HOME/.config/nxm/jellyfin
   mkdir $HOME/.config/nxm/jellyfin/config
   mkdir $HOME/.config/nxm/jellyfin/cache
