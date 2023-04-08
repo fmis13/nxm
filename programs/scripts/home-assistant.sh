@@ -4,8 +4,12 @@ set -e
 
 echo 'All important information will be stored at $HOME/home-assistant'
 
-mkdir -p $HOME/.config/nxm/home-assistant
-mkdir $HOME/.config/nxm/home-assistant/config
+if [ -d "$HOME/.config/nxm/home-assistant" ] && [ -d "$HOME/.config/nxm/home-assistant/config" ]; then
+    break
+else
+    mkdir -p $HOME/.config/nxm/home-assistant
+    mkdir $HOME/.config/nxm/home-assistant/config
+fi
 
 	cat > $HOME/.config/nxm/home-assistant/docker-compose.yml << END
 version: '3'

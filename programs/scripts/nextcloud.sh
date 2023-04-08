@@ -4,7 +4,11 @@ set -e
 
 read -p 'Choose a folder to store all your data: ' FOLDER
 
-mkdir $HOME/.config/nxm/nextcloud
+if [ -d "$HOME/.config/nxm/nextcloud" ]; then
+    break
+else
+    mkdir -p $HOME/.config/nxm/nextcloud
+fi
 
 docker volume create ^
 --driver local ^

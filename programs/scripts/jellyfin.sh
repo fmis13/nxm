@@ -5,10 +5,13 @@ set -e
 read -p 'Choose the folder where your media is stored (please use the standard linux paths, e.g /mnt/myvideos): ' FOLDER
 echo "You selected folder $FOLDER"
 
-  mkdir -p $HOME/.config/nxm/jellyfin
-  mkdir $HOME/.config/nxm/jellyfin/config
-  mkdir $HOME/.config/nxm/jellyfin/cache
-
+if [ -d "$HOME/.config/nxm/jellyfin"] && [ -d "$HOME/.config/nxm/jellyfin/config" ] && [ -d $HOME/.config/nxm/jellyfin/cache ]; then
+    break
+else
+    mkdir -p $HOME/.config/nxm/jellyfin
+    mkdir $HOME/.config/nxm/jellyfin/config
+    mkdir $HOME/.config/nxm/jellyfin/cache
+fi
 
 	cat > $HOME/.config/nxm/jellyfin/docker-compose.yml << END
 version: '3.5'
