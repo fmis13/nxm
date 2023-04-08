@@ -5,9 +5,7 @@ set -e
 read -p 'Choose the folder where your media is stored (please use the standard linux paths, e.g /mnt/myvideos): ' FOLDER
 echo "You selected folder $FOLDER"
 
-if [ -d "$HOME/.config/nxm/jellyfin"] && [ -d "$HOME/.config/nxm/jellyfin/config" ] && [ -d $HOME/.config/nxm/jellyfin/cache ]; then
-    continue
-else
+if [ ! -d "$HOME/.config/nxm/jellyfin" ] && [ ! -d "$HOME/.config/nxm/jellyfin/config" ] && [ ! -d "$HOME/.config/nxm/jellyfin/cache" ]; then
     mkdir -p $HOME/.config/nxm/jellyfin
     mkdir $HOME/.config/nxm/jellyfin/config
     mkdir $HOME/.config/nxm/jellyfin/cache
