@@ -36,4 +36,4 @@ services:
       - "host.docker.internal:host-gateway"
 END
 	cd $HOME/.config/nxm/jellyfin
-	docker-compose up -d
+	docker compose up -d
