@@ -4,11 +4,13 @@
 <h2 align="center">nxm</h2>
 
 <p align="center">
-    The package manager for linux (home-)servers.
+    The package manager for Linux (home-)servers.
     <br>
-    <a href="https://github.com/nixmember/nixmember/issues/new">Report bug(s)</a>
+    <a href="https://github.com/nixmember/nixmember/blob/master/README.md#installing-via-the-installation-script">Install</a>
     ·
-    <a href="https://github.com/nixmember/nixmember/issues/new">Feature request(s)</a>
+    <a href="https://github.com/nixmember/nixmember/issues/new/choose">Request feature or report bug</a>
+    ·
+    <a href="https://github.com/nixmember/nixmember/blob/master/CONTRIBUTING.md">Contributing</a>
     </p>
 </p>
 
@@ -31,7 +33,8 @@ curl https://raw.githubusercontent.com/nixmember/nixmember/main/install.sh | bas
 
 ### Compiling
 
-In order to compile `nxm` you need to have `go` and `git` installed, and run the following commands:
+To compile `nxm` you need to have `go` and` `git` installed, and run the following commands:
+
 ```bash
 git clone https://github.com/nixmember/nixmember && cd nixmember
 sudo make install
