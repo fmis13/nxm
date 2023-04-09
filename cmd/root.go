@@ -42,7 +42,7 @@ func init() {
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
 	Use:   "nxm",
-	Short: "The package manager for linux (home-)servers.",
+	Short: "The package manager for Linux (home-)servers.",
 	Long:  `error: no operation specified (use --h for help)`,
 }
 

@@ -49,7 +49,7 @@ func homeAssistantInstallation() {
 }
 
 func homeAssistantUninstallation() {
-	cmd := exec.Command("/bin/bash", "-c", "rm -rf $HOME/home-assistant")
+	cmd := exec.Command("/bin/bash", "-c", "rm -rf $HOME/.config/nxm/home-assistant")
 
 	stdout, err := cmd.Output()
 
@@ -61,7 +61,7 @@ func homeAssistantUninstallation() {
 }
 
 func homeAssistantUpdate() {
-	cmd := exec.Command("/bin/bash", "-c", "cd $HOME/home-assistant; docker-compose pull")
+	cmd := exec.Command("/bin/bash", "-c", "cd $HOME/.config/nxm/home-assistant; docker compose pull")
 
 	stdout, err := cmd.Output()
 

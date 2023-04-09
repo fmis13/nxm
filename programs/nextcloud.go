@@ -49,7 +49,7 @@ func nextcloudInstallation() {
 }
 
 func nextcloudUninstallation() {
-	cmd := exec.Command("/bin/bash", "-c", "rm -rf $HOME/nextcloud")
+	cmd := exec.Command("/bin/bash", "-c", "rm -rf $HOME/.config/nxm/nextcloud")
 
 	stdout, err := cmd.Output()
 

@@ -49,7 +49,7 @@ func jellyfinInstallation() {
 }
 
 func jellyfinUninstallation() {
-	cmd := exec.Command("/bin/bash", "-c", "rm -rf $HOME/jellyfin")
+	cmd := exec.Command("/bin/bash", "-c", "rm -rf $HOME/.config/nxm/jellyfin")
 
 	stdout, err := cmd.Output()
 
@@ -61,7 +61,7 @@ func jellyfinUninstallation() {
 }
 
 func jellyfinUpdate() {
-	cmd := exec.Command("/bin/bash", "-c", "cd $HOME/jellyfin; docker-compose pull")
+	cmd := exec.Command("/bin/bash", "-c", "cd $HOME/.config/nxm/jellyfin; docker compose pull")
 
 	stdout, err := cmd.Output()
 

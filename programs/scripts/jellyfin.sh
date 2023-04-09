@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 read -p 'Choose the folder where your media is stored (please use the standard linux paths, e.g /mnt/myvideos): ' FOLDER
 echo "You selected folder $FOLDER"
 
