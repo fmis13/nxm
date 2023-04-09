@@ -61,7 +61,7 @@ func nextcloudUninstallation() {
 }
 
 func nextcloudUpdate() {
-	cmd := exec.Command("/bin/bash", "-c", "echo 'For updating nextcloud, please see the documentation'")
+	cmd := exec.Command("/bin/bash", "-c", "echo 'For updating nextcloud, please see their documentation at'")
 
 	stdout, err := cmd.Output()
 
