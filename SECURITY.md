@@ -2,9 +2,6 @@
 
 ## Supported Versions
 
-Use this section to tell people about which versions of your project are
-currently being supported with security updates.
-
 | Version | Supported          |
 | ------- | ------------------ |
 | 1.0.1   | :white_check_mark: |
@@ -12,8 +9,6 @@ currently being supported with security updates.
 
 ## Reporting a Vulnerability
 
-Use this section to tell people how to report a vulnerability.
-
-Tell them where to go, how often they can expect to get an update on a
-reported vulnerability, what to expect if the vulnerability is accepted or
-declined, etc.
+Vulnerabilities should be disclosed to the main developer of the repository (@sheeepdev) **privately**.
+Upon receipt the developer may check the validity of the report and take action based on the vulnerability level.
+Please do not disclose the vulnerability until it has been resolved!
